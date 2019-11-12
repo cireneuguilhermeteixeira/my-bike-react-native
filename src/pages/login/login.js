@@ -38,7 +38,7 @@ const Login = ({ navigation }) => (
             
 
             <TouchableOpacity
-                    onPress={() => { navigation.navigate('Home') }}
+                    onPress={() => { navigation.navigate('Tabs') }}
                     style={styles.buttonContainer}>
                     <Text style={styles.buttonText}>
                         Login
