@@ -10,7 +10,9 @@ import { Divider,ListItem } from 'react-native-elements'
 import { Col, Grid } from "react-native-easy-grid";
 
 import Avatar from '~/pages/perfil/avatar/avatar';
+import MeuSlide from '~/pages/perfil/slide/meu-slide';
 import Slideshow from 'react-native-slideshow';
+
 
 
 class Perfil extends React.Component {
@@ -57,42 +59,42 @@ class Perfil extends React.Component {
     
     }
 
+    
     render(){
-
-    
-    
-
         
         return(
-            <View>
+            <ScrollView>
+                <View style={{alignItems:'center', height:50, backgroundColor: "#347474"}}>
+                    <Text style={{marginTop:10, color:'#fff',fontSize:20 }}>My Bike</Text>
+                </View>
                 <View style={{height:120}}>
                     <Grid>
                         <Col style={{marginTop:20}}>
-                            <Text style={{fontSize:13, fontWeight:'bold'}}>Cireneu Guilherme</Text>
                             <Image
                             source={require("../../assets/imgs/eu.png")}
                             style={{width:70, height:70, borderRadius:50,  resizeMode: 'cover'}}
                             />
+                            <Text style={{marginLeft:10, fontSize:13, fontWeight:'bold'}}>Cireneu Guilherme</Text>
                         </Col>
 
-                        <Col style={{marginTop:50, marginLeft:10}}>
-                            <Icon name="ios-settings" color={'gray'} size={24}/>
-                            <Text>Quilometragem</Text>
+                        <Col style={{marginTop:40, marginLeft:10}}>
+                            <Icon style={{marginLeft:25}} name="ios-stopwatch" color={'gray'} size={24}/>
+                            <Text style={{fontSize:10}}>Quilometragem</Text>
                         </Col>
 
-                        <Col style={{marginTop:50, marginLeft:10}}>
-                            <Icon name="ios-settings" color={'gray'} size={24}/>
-                            <Text>Amigos</Text>
+                        <Col style={{marginTop:40, marginLeft:20}}>
+                            <Icon style={{marginLeft:5}} name="ios-people" color={'gray'} size={24}/>
+                            <Text style={{fontSize:10}}>Amigos</Text>
                         </Col>
 
-                        <Col style={{marginTop:50, marginLeft:10}}>
-                            <Icon name="ios-settings" color={'gray'} size={24}/>
-                            <Text>Eventos</Text>
+                        <Col style={{marginTop:40, marginLeft:10}}>
+                            <Icon style={{marginLeft:8}} name="ios-calendar" color={'gray'} size={24}/>
+                            <Text style={{fontSize:10}}>Eventos</Text>
                         </Col>
 
-                        <Col style={{marginTop:50, marginLeft:10}}>
-                            <Icon name="ios-settings" color={'gray'} size={24}/>
-                            <Text>Conquistas</Text>
+                        <Col style={{marginTop:40, marginLeft:10}}>
+                            <Icon style={{marginLeft:15}} name="ios-medal" color={'gray'} size={24}/>
+                            <Text style={{fontSize:10}}>Conquistas</Text>
                         </Col>
                     </Grid>
                 </View>
@@ -137,42 +139,34 @@ class Perfil extends React.Component {
                     <View>
                         <Text style={{margin:5}}>Meus Eventos</Text>
                         <Divider style={{ backgroundColor: '#979797' }} />
-                        <Slideshow
+                          <Slideshow
                             dataSource={this.state.dataSource}
                             position={this.state.position}
                             onPositionChanged={position =>   this.setState({ position })}
-                        />
+                        />  
                     </View>
                 </View>            
                 
                 <View style={{marginTop:20, height:300}}>
+                    <Text style={{margin:5}}>Minhas Conquistas</Text>
+                    <Divider style={{ backgroundColor: '#979797' }} />
                     <ListItem
                         style = {{marginTop: 5}}
-                        roundAvatar
-                        title="Calorias"
-                        rightTitle="3450 KCAL"
+                        leftIcon={{ name: "check" }}
+                        title="Pedalador Experiente"
+                        subtitle="Pedale 100 km"
                     />
-                <ListItem
-                        style = {{marginTop: 5}}
-                        roundAvatar
-                        title="Carboidratos"
-                        rightTitle="100 g"
-                    />
-                <ListItem
-                        style = {{marginTop: 5}}
-                        roundAvatar
-                        title="Proteína"
-                        rightTitle="150 g"
-                    />
+
                     <ListItem
                         style = {{marginTop: 5}}
-                        roundAvatar
-                        title="Gorduras"
-                        rightTitle="80 g"
-                    />    
+                        leftIcon={{ name: "check" }}
+                        title="Nascido pra competir"
+                        subtitle="Participe de pelo menos 10 eventos"
+                    />
+               
                 </View>
 
-            </View>
+            </ScrollView>
         );
     }
 }
