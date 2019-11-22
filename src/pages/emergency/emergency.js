@@ -5,16 +5,16 @@ import {
 } from 'react-native';
 
 
-class Home extends React.Component {
+class Emergency extends React.Component {
     render(){
      
         return(
             <View>
-                <Text>Home</Text>
+                <Text>Emergência</Text>
             </View>
         );
     }
 }
 
 
-export default Home;
+export default Emergency;

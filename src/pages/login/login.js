@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import {
   Dimensions,
   StyleSheet,
@@ -10,14 +10,14 @@ import {
   TextInput,
 } from 'react-native';
 
-const Login = ({navigation}) => (
+const Login = ({ navigation }) => (
   <View style={styles.container}>
     <StatusBar barStyle="light-content" />
     <View style={styles.headerContainer}>
       <Text style={styles.title}>MyBike</Text>
     </View>
     <View style={styles.myForm}>
-      <View style={{alignItems: 'center', marginTop: -60}}>
+      <View style={{ alignItems: 'center', marginTop: -60 }}>
         <Image
           style={styles.nutriImage}
           source={require('../../assets/icons/mybikeicon.png')}
@@ -28,7 +28,7 @@ const Login = ({navigation}) => (
 
       <TouchableOpacity
         onPress={() => {
-          navigation.navigate('Home');
+          navigation.navigate('Tabs');
         }}
         style={styles.buttonContainer}>
         <Text style={styles.buttonText}>Login</Text>
@@ -38,15 +38,16 @@ const Login = ({navigation}) => (
         onPress={() => {
           navigation.navigate('Register');
         }}>
-        <Text style={{textAlign: 'right', paddingRight: 20}}>
-          Esqueceu a senha?
+
+        <Text style={styles.createCount}>
+          Não possui conta? Cadastre-se{' '}
+          <Text style={{ textDecorationLine: 'underline' }}>Aqui</Text>
         </Text>
+
+
       </TouchableOpacity>
 
-      <Text style={styles.createCount}>
-        Não possui conta? Cadastre-se{' '}
-        <Text style={{textDecorationLine: 'underline'}}>Aqui</Text>
-      </Text>
+
     </View>
   </View>
 );
@@ -54,8 +55,8 @@ const Login = ({navigation}) => (
 const styles = StyleSheet.create({
   container: {
     alignItems: 'center',
+    justifyContent: 'center',
     flex: 1,
-    padding: 20,
     backgroundColor: '#35495e',
   },
 
@@ -93,7 +94,8 @@ const styles = StyleSheet.create({
 
   title: {
     color: '#ffff',
-    fontSize: 40,
+    fontSize: 30,
+    fontWeight: 'bold'
   },
 
   buttonContainer: {
@@ -110,7 +112,7 @@ const styles = StyleSheet.create({
 
   createCount: {
     textAlign: 'center',
-    marginTop: 80,
+    marginTop: 10,
     marginBottom: 10,
   },
 });
