@@ -4,7 +4,8 @@ import {
     Text,
     ScrollView,
     Image,
-    SafeAreaView
+    SafeAreaView,
+    TouchableOpacity
 } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { Divider, ListItem } from 'react-native-elements'
@@ -65,108 +66,111 @@ class Perfil extends React.Component {
     render() {
 
         return (
-            <SafeAreaView style = {{flex: 1}}  > 
-                           <ScrollView>
-                <View style={{ height: 120 }}>
-                    <Grid>
-                        <Col style={{ marginTop: 20 }}>
-                            <Image
-                                source={require("../../assets/imgs/eu.png")}
-                                style={{ width: 70, height: 70, borderRadius: 50, resizeMode: 'cover' }}
-                            />
-                            <Text style={{ marginLeft: 10, fontSize: 13, fontWeight: 'bold' }}>Cireneu Guilherme</Text>
-                        </Col>
+            <SafeAreaView style={{ flex: 1 }}  >
+                <ScrollView>
+                    <View style={{ height: 120 }}>
+                        <Grid>
+                            <Col style={{ alignItems: 'center', justifyContent: 'center' }}>
+                                <Image
+                                    source={require("../../assets/imgs/eu.png")}
+                                    style={{ width: 60, height: 60, borderRadius: 50, resizeMode: 'cover' }}
+                                />
+                                <Text style={{ fontSize: 13, fontWeight: 'bold' }}>Cireneu</Text>
+                            </Col>
 
-                        <Col style={{ marginTop: 40, marginLeft: 10 }}>
-                            <Icon style={{ marginLeft: 25 }} name="ios-stopwatch" color={'gray'} size={24} />
-                            <Text style={{ fontSize: 10 }}>Quilometragem</Text>
-                        </Col>
+                            <Col style={{ marginLeft: 10, justifyContent: 'center', alignItems: 'center' }}>
+                                <Icon name="ios-stopwatch" color={'gray'} size={24} />
+                                <Text style={{ fontSize: 10 }}>Quilometragem</Text>
+                            </Col>
 
-                        <Col style={{ marginTop: 40, marginLeft: 20 }}>
-                            <Icon style={{ marginLeft: 5 }} name="ios-people" color={'gray'} size={24} />
-                            <Text style={{ fontSize: 10 }}>Amigos</Text>
-                        </Col>
+                            <Col style={{ marginLeft: 10, justifyContent: 'center', alignItems: 'center' }}>
+                                <TouchableOpacity onPress={() => this.props.navigation.navigate('Friends')}>
 
-                        <Col style={{ marginTop: 40, marginLeft: 10 }}>
-                            <Icon style={{ marginLeft: 8 }} name="ios-calendar" color={'gray'} size={24} />
-                            <Text style={{ fontSize: 10 }}>Eventos</Text>
-                        </Col>
+                                    <Icon name="ios-people" color={'gray'} size={24} />
+                                </TouchableOpacity>
+                                <Text style={{ fontSize: 10 }}>Amigos</Text>
+                            </Col>
 
-                        <Col style={{ marginTop: 40, marginLeft: 10 }}>
-                            <Icon style={{ marginLeft: 15 }} name="ios-medal" color={'gray'} size={24} />
-                            <Text style={{ fontSize: 10 }}>Conquistas</Text>
-                        </Col>
-                    </Grid>
-                </View>
-                <View>
-                    <View style={{ height: 150, marginTop: 20, margin: 10 }}>
-                        <Text>Meus Amigos</Text>
-                        <Divider style={{ backgroundColor: '#979797' }} />
-                        <ScrollView
-                            style={{ marginTop: 10 }}
-                            horizontal={true}
-                            showsHorizontalScrollIndicator={false}
-                        >
-
-                            <Avatar
-                                imageUri={require("../../assets/imgs/avatar.jpg")}
-                                name="Usuário 1"
-                            />
-                            <Avatar
-                                imageUri={require("../../assets/imgs/avatar.jpg")}
-                                name="Usuário 2"
-                            />
-                            <Avatar
-                                imageUri={require("../../assets/imgs/avatar.jpg")}
-                                name="Usuário 3"
-                            />
-                            <Avatar
-                                imageUri={require("../../assets/imgs/avatar.jpg")}
-                                name="Usuário 4"
-                            />
-                            <Avatar
-                                imageUri={require("../../assets/imgs/avatar.jpg")}
-                                name="Usuário 5"
-                            />
-                            <Avatar
-                                imageUri={require("../../assets/imgs/avatar.jpg")}
-                                name="Usuário 6"
-                            />
-
-
-                        </ScrollView>
+                            <Col style={{ marginLeft: 10, justifyContent: 'center', alignItems: 'center' }}>
+                                <Icon name="ios-calendar" color={'gray'} size={24} />
+                                <Text style={{ fontSize: 10 }}>Eventos</Text>
+                            </Col>
+                        </Grid>
                     </View>
+
                     <View>
-                        <Text style={{ margin: 5 }}>Meus Eventos</Text>
-                        <Divider style={{ backgroundColor: '#979797' }} />
-                        <Slideshow
-                            dataSource={this.state.dataSource}
-                            position={this.state.position}
-                            onPositionChanged={position => this.setState({ position })}
-                        />
+                        <View style={{ height: 150, marginTop: 20, margin: 10 }}>
+                            <TouchableOpacity onPress={() => this.props.navigation.navigate('Friends')}>
+
+                                <Text>Meus Amigos</Text>
+                            </TouchableOpacity>
+                            <Divider style={{ backgroundColor: '#979797' }} />
+                            <ScrollView
+                                style={{ marginTop: 10 }}
+                                horizontal={true}
+                                showsHorizontalScrollIndicator={false}
+                            >
+
+                                <Avatar
+                                    imageUri={require("../../assets/imgs/avatar.jpg")}
+                                    name="Usuário 1"
+                                />
+                                <Avatar
+                                    imageUri={require("../../assets/imgs/avatar.jpg")}
+                                    name="Usuário 2"
+                                />
+                                <Avatar
+                                    imageUri={require("../../assets/imgs/avatar.jpg")}
+                                    name="Usuário 3"
+                                />
+                                <Avatar
+                                    imageUri={require("../../assets/imgs/avatar.jpg")}
+                                    name="Usuário 4"
+                                />
+                                <Avatar
+                                    imageUri={require("../../assets/imgs/avatar.jpg")}
+                                    name="Usuário 5"
+                                />
+                                <Avatar
+                                    imageUri={require("../../assets/imgs/avatar.jpg")}
+                                    name="Usuário 6"
+                                />
+
+
+                            </ScrollView>
+                        </View>
+
+                        <View>
+                            <Text style={{ margin: 5 }}>Meus Eventos</Text>
+                            <Divider style={{ backgroundColor: '#979797' }} />
+                            <Slideshow
+                                dataSource={this.state.dataSource}
+                                position={this.state.position}
+                                onPositionChanged={position => this.setState({ position })}
+                            />
+                        </View>
                     </View>
-                </View>
 
-                <View style={{ marginTop: 20, height: 300 }}>
-                    <Text style={{ margin: 5 }}>Minhas Conquistas</Text>
-                    <Divider style={{ backgroundColor: '#979797' }} />
-                    <ListItem
-                        style={{ marginTop: 5 }}
-                        leftIcon={{ name: "check" }}
-                        title="Pedalador Experiente"
-                        subtitle="Pedale 100 km"
-                    />
+                    <View style={{ marginTop: 20, height: 300 }}>
+                        <Text style={{ margin: 5 }}>Minhas Conquistas</Text>
+                        <Divider style={{ backgroundColor: '#979797' }} />
+                        <ListItem
+                            style={{ marginTop: 5 }}
+                            leftIcon={{ name: "check" }}
+                            title="Pedalador Experiente"
+                            subtitle="Pedale 100 km"
+                        />
 
-                    <ListItem
-                        style={{ marginTop: 5 }}
-                        leftIcon={{ name: "check" }}
-                        title="Nascido pra competir"
-                        subtitle="Participe de pelo menos 10 eventos"
-                    />
+                        <ListItem
+                            style={{ marginTop: 5 }}
+                            leftIcon={{ name: "check" }}
+                            title="Nascido pra competir"
+                            subtitle="Participe de pelo menos 10 eventos"
+                        />
 
-                </View>
+                    </View>
 
-            </ScrollView>
+                </ScrollView>
             </SafeAreaView>
 
         );

@@ -4,11 +4,6 @@ import { createStackNavigator } from 'react-navigation-stack';
 import Login from '~/pages/login/login';
 import React from 'react';
 import {
-  View,
-  Text,
-  SafeAreaView,
-  Image,
-  Platform,
   TouchableOpacity,
 } from 'react-native';
 

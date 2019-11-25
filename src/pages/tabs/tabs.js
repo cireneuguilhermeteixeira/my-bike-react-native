@@ -1,21 +1,69 @@
 import React, { Component } from 'react';
-import { createBottomTabNavigator } from 'react-navigation-tabs'; import Icon from 'react-native-vector-icons/Ionicons';
+import { createBottomTabNavigator } from 'react-navigation-tabs';
+import Icon from 'react-native-vector-icons/Ionicons';
+import Icon1 from 'react-native-vector-icons/AntDesign';
 
 import Perfil from '~/pages/perfil/perfil';
 import Routes from '~/pages/routes/routes';
 import Events from '~/pages/events/events';
 import Settings from '~/pages/settings/settings';
 import Emergency from '~/pages/emergency/emergency';
+import Friends from '~/pages/Friends';
+import { createStackNavigator } from 'react-navigation-stack';
+import {
+    TouchableOpacity,
+} from 'react-native';
+
+
+const PerfilNavigation = createStackNavigator(
+    {
+        Perfil: {
+            screen: Perfil,
+            navigationOptions: () => ({
+                headerShown: false,
+
+            })
+
+        },
+
+        Friends: {
+            screen: Friends,
+            navigationOptions: ({ navigation }) => ({
+                headerBackTitle: null,
+                title: 'Amigos',
+                headerTintColor: '#fff',
+                headerStyle: { backgroundColor: '#35495e' },
+                headerLeft: (
+                    <TouchableOpacity
+                        hitSlop={{ top: 20, bottom: 20, left: 50, right: 50 }}
+                        onPress={() => navigation.goBack()}>
+                        <Icon1
+                            style={{ marginLeft: 15 }}
+                            name="left"
+                            size={25}
+                            color="white"
+                        />
+                    </TouchableOpacity>
+                ),
+            })
+
+
+        },
+    },
+    {
+        backBehavior: 'history',
+    },
+);
 
 const Tabs = createBottomTabNavigator({
 
 
-    Routes: {
-        screen: Routes,
+    Friends: {
+        screen: Friends,
         navigationOptions: {
-            tabBarLabel: 'Trajetos',
+            tabBarLabel: 'Amigos',
             tabBarIcon: ({ tintColor }) => (
-                <Icon name="ios-bicycle" color={tintColor} size={24} />
+                <Icon name="ios-people" color={tintColor} size={24} />
             )
         }
     },
@@ -48,7 +96,7 @@ const Tabs = createBottomTabNavigator({
         }
     },
     Perfil: {
-        screen: Perfil,
+        screen: PerfilNavigation,
         navigationOptions: {
             tabBarLabel: 'Perfil',
             tabBarIcon: ({ tintColor }) => (
@@ -62,7 +110,7 @@ const Tabs = createBottomTabNavigator({
     {
 
         initialRouteName: 'Perfil',
-        order: ['Routes', 'Events', 'Settings', 'Emergency', 'Perfil'],
+        order: ['Perfil', 'Events', 'Settings', 'Emergency', 'Friends',],
         navigationOptions: {
             tabBarVisible: true
         },
