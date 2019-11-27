@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {
   View,
-  Image,
+  KeyboardAvoidingView,
   Text,
   TouchableOpacity,
   StatusBar,
@@ -10,6 +10,7 @@ import {
 } from 'react-native';
 import api from '~/services/api';
 import styles from './styles';
+import {Header} from 'react-navigation-stack';
 
 export default class Register extends Component {
   constructor(props) {
@@ -49,31 +50,39 @@ export default class Register extends Component {
         {cancelable: false},
       );
     } else {
-      console.log('veio ate aqui');
-
       const response = await api.post('/create/user', {
-        login: 'testizinhoza',
-        password: '123333',
-        name: 'teste',
+        login: this.state.user,
+        password: this.state.password,
+        name: this.state.user,
       });
-
-      console.log(response);
-      Alert.alert(
-        'Tudo certo !',
-        'Usuário Cadastrado com sucesso !',
-        [{text: 'OK', onPress: () => console.log('OK Pressed')}],
-        {cancelable: false},
-      );
+      if (response.data.status) {
+        Alert.alert(
+          'Tudo certo !',
+          'Usuário Cadastrado com sucesso !',
+          [{text: 'OK', onPress: () => console.log('OK Pressed')}],
+          {cancelable: false},
+        );
+      } else {
+        Alert.alert(
+          'Deu ruim!',
+          'Usuário não cadastrado Cadastrado com sucesso !',
+          [{text: 'OK', onPress: () => console.log('OK Pressed')}],
+          {cancelable: false},
+        );
+      }
     }
   };
 
   render() {
     return (
-      <View style={styles.container}>
+      <KeyboardAvoidingView
+        style={styles.container}
+        behavior={Platform.OS === 'ios' ? 'padding' : null}>
         <StatusBar barStyle="light-content" />
         <View style={styles.headerContainer}>
           <Text style={styles.title}>Cadastre-se</Text>
         </View>
+
         <View style={styles.myForm}>
           <View style={{alignItems: 'center'}}></View>
           <TextInput
@@ -100,7 +109,7 @@ export default class Register extends Component {
             <Text style={styles.buttonText}>CADASTRAR</Text>
           </TouchableOpacity>
         </View>
-      </View>
+      </KeyboardAvoidingView>
     );
   }
 }
